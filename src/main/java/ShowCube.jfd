@@ -1,0 +1,751 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "MainFrame"
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "MainPanel"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell0"
+					"name": "0"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 345
+					"y": 240
+					"width": 40
+					"height": 40
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell1"
+					"name": "1"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell2"
+					"name": "2"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell3"
+					"name": "3"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell4"
+					"name": "4"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell5"
+					"name": "5"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell6"
+					"name": "6"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell7"
+					"name": "7"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side0_cell8"
+					"name": "8"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell0"
+					"name": "9"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 515
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell1"
+					"name": "10"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 560
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell2"
+					"name": "11"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 605
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell3"
+					"name": "12"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 515
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell4"
+					"name": "13"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 560
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell5"
+					"name": "14"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 605
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell6"
+					"name": "15"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 515
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell7"
+					"name": "16"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 560
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side1_cell8"
+					"name": "17"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 605
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell0"
+					"name": "18"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 175
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell1"
+					"name": "19"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 220
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell2"
+					"name": "20"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 265
+					"y": 240
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell3"
+					"name": "21"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 175
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell4"
+					"name": "22"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 220
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell5"
+					"name": "23"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 265
+					"y": 285
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell6"
+					"name": "24"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 175
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell7"
+					"name": "25"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 220
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side2_cell8"
+					"name": "26"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 265
+					"y": 330
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell0"
+					"name": "27"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 90
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell1"
+					"name": "28"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 90
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell2"
+					"name": "29"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 90
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell3"
+					"name": "30"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 135
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell4"
+					"name": "31"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 135
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell5"
+					"name": "32"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 135
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell6"
+					"name": "33"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 180
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell7"
+					"name": "34"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 180
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side3_cell8"
+					"name": "35"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 180
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell0"
+					"name": "36"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 395
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell1"
+					"name": "37"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 395
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell2"
+					"name": "38"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 395
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell3"
+					"name": "39"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 440
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell4"
+					"name": "40"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 440
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell5"
+					"name": "41"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 440
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell6"
+					"name": "42"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 485
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell7"
+					"name": "43"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 485
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side4_cell8"
+					"name": "44"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 485
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell0"
+					"name": "45"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 540
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell1"
+					"name": "46"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 540
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell2"
+					"name": "47"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 540
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell3"
+					"name": "48"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 585
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell4"
+					"name": "49"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 585
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell5"
+					"name": "50"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 585
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell6"
+					"name": "51"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 345
+					"y": 630
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell7"
+					"name": "52"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 390
+					"y": 630
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "side5_cell8"
+					"name": "53"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "buttonsMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 40
+					"height": 40
+					"x": 435
+					"y": 630
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "F"
+					"text": "F"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "FMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 735
+					"y": 30
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Freverse"
+					"text": "F'"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "FreverseMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 50
+					"height": 25
+					"x": 795
+					"y": 30
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "B"
+					"text": "B"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "BMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 735
+					"y": 65
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Breverse"
+					"text": "B'"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "BreverseMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 795
+					"y": 65
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "L"
+					"text": "L"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "LMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 735
+					"y": 100
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Lreverse"
+					"text": "L'"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "LreverseMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 795
+					"y": 100
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "R"
+					"text": "R"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "RMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 735
+					"y": 135
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Rreverse"
+					"text": "R'"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "RreverseMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 795
+					"y": 135
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "U"
+					"text": "U"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "UMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 735
+					"y": 170
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Ureverse"
+					"text": "U'"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "UreverseMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 795
+					"y": 170
+					"width": 50
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "D"
+					"text": "D"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "DMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 50
+					"height": 25
+					"x": 735
+					"y": 205
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Dreverse"
+					"text": "D'"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "DreverseMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 50
+					"height": 25
+					"x": 795
+					"y": 205
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "random"
+					"text": "Random"
+					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 1, 10, false )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "randomMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 725
+					"y": 525
+					"width": 155
+					"height": 65
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "scramble"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 4, false )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 25
+					"y": 680
+					"width": 910
+					"height": 30
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "solve"
+					"text": "Solve"
+					"font": #SwingDerivedFont0
+					"visible": false
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "solveMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 155
+					"height": 65
+					"x": 725
+					"y": 610
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "lentghScramble"
+					"text": "Input length of scramble:"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "lentghScrambleMouseClicked", true ) )
+					addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "lentghScrambleFocusLost", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 725
+					"y": 490
+					"width": 155
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "customField"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 25
+					"y": 15
+					"width": 535
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "custom"
+					"text": "Custom"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "customMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 510
+					"y": 50
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "solveText"
+						"background": new java.awt.Color( 240, 240, 240, 255 )
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 720
+					"width": 925
+					"height": 160
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 10
+				"y": 10
+				"width": 955
+				"height": 895
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 975, 950 )
+		} )
+	}
+}

@@ -1,0 +1,16 @@
+# Project exclude paths
+/target/
+.idea/*.xml
+.idea/copyright
+.idea/libraries
+.idea/shelf
+.idea/.name
+out
+build
+lib
+
+*.iml
+*.ipr
+*.iws
+*.zip
+*.log

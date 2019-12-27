@@ -10,19 +10,9 @@ class SolverTest {
     @Test
     void solve() {
         Cube cube = new Cube();
-        Cube cube2 = new Cube();
-        Solver solver;
         cube.shuffle(20);
-        solver = new Solver(cube);
-        for (String i : cube.scramble.split(" ")) {
-            cube2.turn(i);
-        }
-        String temp = solver.solve();
-        for (String i : temp.split(" ")) {
-            cube2.turn(i);
-        }
-        System.out.println(cube.scramble);
-        System.out.println(temp);
-        assertTrue(cube2.isSolved());
+        Solver solver = new Solver(cube);
+        solver.solve();
+        assertTrue(cube.isSolved());
     }
 }

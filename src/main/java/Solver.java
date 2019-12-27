@@ -10,1415 +10,653 @@ class Solver {
     }
 
     String solve() {
-        step1();
+        whiteCross();
         if (cube.isSolved()) return builder.toString();
-        step2();
+        rightWhiteCross();
         if (cube.isSolved()) return builder.toString();
-        step3();
+        whiteSide();
         if (cube.isSolved()) return builder.toString();
-        step4();
+        secondLayer();
         if (cube.isSolved()) return builder.toString();
-        step5();
+        yellowCross();
         if (cube.isSolved()) return builder.toString();
-        step6();
+        rightYellowCross();
         if (cube.isSolved()) return builder.toString();
-        step7();
+        rightCorner();
         if (cube.isSolved()) return builder.toString();
-        step8();
+        turnCorner();
         if (cube.isSolved()) return builder.toString();
         return "ERROR";
     }
 
-    private void step1() {
-        while (!(cube.sides[0].cells[1].color.equals("white") && cube.sides[0].cells[5].color.equals("white") &&
-                cube.sides[0].cells[7].color.equals("white") && cube.sides[0].cells[3].color.equals("white"))) {
+    private void whiteCross() {
+        while (!(cube.equalsColor(0, Arrays.asList(1, 3, 4, 5, 7), Cube.Color.WHITE))) {
             for (int i = 1; i < 6; i++) {
                 switch (i) {
                     case 1:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 1:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("B");
-                                        builder.append("B ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("B");
-                                        cube.turn("U");
-                                        builder.append("U' B U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("B");
-                                        cube.turn("U'");
-                                        cube.turn("U'");
-                                        builder.append("U U B U' U' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("B");
-                                        cube.turn("U'");
-                                        builder.append("U B U' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' B U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U B U' U' ")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U B U'")).append(" ");
                                     }
                                     break;
                                 case 5:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("R'");
-                                        cube.turn("B");
-                                        cube.turn("R");
-                                        builder.append("R' B R ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("R'");
-                                        cube.turn("U'");
-                                        cube.turn("B");
-                                        cube.turn("U");
-                                        builder.append("R' U' B U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("R");
-                                        cube.turn("F'");
-                                        cube.turn("R'");
-                                        builder.append("R F' R' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("R");
-                                        cube.turn("F'");
-                                        cube.turn("R'");
-                                        cube.turn("U");
-                                        builder.append("U' R F' R' U ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R' B R")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R' U' B U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R F' R'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' R F' R' U")).append(" ");
                                     }
                                     break;
                                 case 7:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("B");
-                                        cube.turn("U'");
-                                        cube.turn("U'");
-                                        builder.append("U U B U' U' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("F'");
-                                        cube.turn("U'");
-                                        builder.append("U F' U' ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("F'");
-                                        builder.append("F' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("F'");
-                                        cube.turn("U");
-                                        builder.append("U' F' U ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U B U' U'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U F' U'")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F'")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' F' U")).append(" ");
                                     }
                                     break;
                                 case 3:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("R");
-                                        cube.turn("B");
-                                        builder.append("R B ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("R");
-                                        cube.turn("U'");
-                                        cube.turn("B");
-                                        cube.turn("U");
-                                        builder.append("R U' B U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("R'");
-                                        cube.turn("F'");
-                                        builder.append("R' F' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("R'");
-                                        cube.turn("U'");
-                                        cube.turn("F'");
-                                        cube.turn("U");
-                                        builder.append("R' U' F' U ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R B")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R U' B U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R' F'")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R' U' F' U")).append(" ");
                                     }
                                     break;
                             }
                         }
                         break;
                     case 2:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 1:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("B'");
-                                        builder.append("B' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("B'");
-                                        cube.turn("U");
-                                        builder.append("U' B' U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("B'");
-                                        cube.turn("U'");
-                                        cube.turn("U'");
-                                        builder.append("U U B' U' U' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("B'");
-                                        cube.turn("U'");
-                                        builder.append("U B' U' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' B' U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U B' U' U'")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U B' U'")).append(" ");
                                     }
                                     break;
                                 case 5:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("L'");
-                                        cube.turn("B'");
-                                        builder.append("L' B' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("L'");
-                                        cube.turn("U'");
-                                        cube.turn("B'");
-                                        cube.turn("U");
-                                        builder.append("L' U' B' U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("L");
-                                        cube.turn("F");
-                                        builder.append("L F ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("L'");
-                                        cube.turn("U");
-                                        cube.turn("B'");
-                                        cube.turn("U'");
-                                        builder.append("L' U B' U' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L' B'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L' U' B' U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L F")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L' U B' U'")).append(" ");
                                     }
                                     break;
                                 case 7:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("F");
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        builder.append("U U F U U ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("F");
-                                        cube.turn("U'");
-                                        builder.append("U F U' ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("F");
-                                        builder.append("F ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("F");
-                                        cube.turn("U");
-                                        builder.append("U' F U ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U F U U")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U F U'")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' F U")).append(" ");
                                     }
                                     break;
                                 case 3:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("L");
-                                        cube.turn("B'");
-                                        cube.turn("L'");
-                                        builder.append("L B' L' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("L");
-                                        cube.turn("B'");
-                                        cube.turn("L'");
-                                        cube.turn("U");
-                                        builder.append("U' L B' L' U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("L'");
-                                        cube.turn("F");
-                                        cube.turn("L");
-                                        builder.append("L' F L ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("L");
-                                        cube.turn("B'");
-                                        cube.turn("L'");
-                                        cube.turn("U'");
-                                        builder.append("U L B' L' U' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L B' L'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' L B' L' U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L' F L")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U L B' L' U'")).append(" ");
                                     }
                                     break;
-
                             }
                         }
                         break;
                     case 3:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 1:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("B'");
-                                        cube.turn("L'");
-                                        cube.turn("B");
-                                        cube.turn("U");
-                                        builder.append("U' B' L' B U ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("B");
-                                        cube.turn("R'");
-                                        cube.turn("B'");
-                                        builder.append("B R' B' ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("B");
-                                        cube.turn("R'");
-                                        cube.turn("B'");
-                                        cube.turn("U");
-                                        builder.append("U' B R' B' U ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("B'");
-                                        cube.turn("L");
-                                        cube.turn("B");
-                                        builder.append("B' L B ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' B' L' B U")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B R' B'")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' B R' B' U")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B' L B")).append(" ");
                                     }
                                     break;
                                 case 5:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("R'");
-                                        cube.turn("U'");
-                                        builder.append("U R' U' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("R'");
-                                        builder.append("R' ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("R'");
-                                        cube.turn("U");
-                                        builder.append("U' R' U ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("R'");
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        builder.append("U U R' U U ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U R' U'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R'")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' R' U")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U R' U U")).append(" ");
                                     }
                                     break;
                                 case 7:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("B'");
-                                        cube.turn("U");
-                                        cube.turn("R'");
-                                        cube.turn("U'");
-                                        builder.append("B' U R' U' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("B'");
-                                        cube.turn("R'");
-                                        builder.append("B' R' ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("B'");
-                                        cube.turn("U'");
-                                        cube.turn("R'");
-                                        cube.turn("U");
-                                        builder.append("B' U' R' U ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("B");
-                                        cube.turn("L");
-                                        builder.append("B L ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B' U R' U'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B' R'")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B' U' R' U")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B L")).append(" ");
                                     }
                                     break;
                                 case 3:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("L");
-                                        cube.turn("U");
-                                        builder.append("U' L U ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("L");
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        builder.append("U U L U U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("L");
-                                        cube.turn("U'");
-                                        builder.append("U L U' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("L");
-                                        builder.append("L ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' L U")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U L U U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U L U'")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L")).append(" ");
                                     }
                                     break;
-
                             }
                         }
                         break;
                     case 4:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 1:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("F");
-                                        cube.turn("U");
-                                        cube.turn("R");
-                                        cube.turn("U'");
-                                        builder.append("F U R U' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("F");
-                                        cube.turn("R");
-                                        builder.append("F R ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("F");
-                                        cube.turn("U'");
-                                        cube.turn("R");
-                                        cube.turn("U");
-                                        builder.append("F U' R U ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("F'");
-                                        cube.turn("L'");
-                                        builder.append("F' L' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F U R U'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F R")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F U' R U")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F' L'")).append(" ");
                                     }
                                     break;
                                 case 5:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("R");
-                                        cube.turn("U'");
-                                        builder.append("U R U' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("R");
-                                        builder.append("R ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("R");
-                                        cube.turn("U");
-                                        builder.append("U' R U ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("R");
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        builder.append("U U R U U ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U R U'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' R U")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U R U U")).append(" ");
                                     }
                                     break;
                                 case 7:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("F");
-                                        cube.turn("U'");
-                                        cube.turn("L'");
-                                        cube.turn("U");
-                                        cube.turn("F'");
-                                        builder.append("F U' L' U F' ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("F'");
-                                        cube.turn("R");
-                                        cube.turn("F");
-                                        builder.append("F' R F ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("F'");
-                                        cube.turn("U'");
-                                        cube.turn("R");
-                                        cube.turn("U");
-                                        builder.append("F' U' R U ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("F");
-                                        cube.turn("L'");
-                                        cube.turn("F'");
-                                        builder.append("F L' F' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F U' L' U F'")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F' R F")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F' U' R U")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F L' F'")).append(" ");
                                     }
                                     break;
                                 case 3:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("U'");
-                                        cube.turn("L'");
-                                        cube.turn("U");
-                                        builder.append("U' L' U ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        cube.turn("L'");
-                                        cube.turn("U");
-                                        cube.turn("U");
-                                        builder.append("U U L' U U ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("U");
-                                        cube.turn("L'");
-                                        cube.turn("U'");
-                                        builder.append("U L' U' ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("L'");
-                                        builder.append("L' ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U' L' U")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U U L' U U")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("U L' U'")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L'")).append(" ");
                                     }
                                     break;
-
                             }
                         }
                         break;
                     case 5:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 1:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("B");
-                                        builder.append("D D B B ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("R");
-                                        builder.append("D R R ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("F");
-                                        cube.turn("F");
-                                        builder.append("F F ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("D'");
-                                        cube.turn("L");
-                                        cube.turn("L");
-                                        builder.append("D' L L ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D D B B")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D R R")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("F F")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D' L L")).append(" ");
                                     }
                                     break;
                                 case 5:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("B");
-                                        builder.append("D B B ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("R");
-                                        cube.turn("R");
-                                        builder.append("R R ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("D'");
-                                        cube.turn("F");
-                                        cube.turn("F");
-                                        builder.append("D' F F ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("L");
-                                        builder.append("D D L L ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D B B")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("R R")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D' F F")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D D L L")).append(" ");
                                     }
                                     break;
                                 case 7:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("B");
-                                        cube.turn("B");
-                                        builder.append("B B ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("D'");
-                                        cube.turn("R");
-                                        cube.turn("R");
-                                        builder.append("D' R R ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("F");
-                                        builder.append("D D F F ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("L");
-                                        builder.append("D L L ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("B B")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D' R R")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D D F F")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D L L")).append(" ");
                                     }
                                     break;
                                 case 3:
-                                    if (!cube.sides[0].cells[1].color.equals("white")) {
-                                        cube.turn("D'");
-                                        cube.turn("B");
-                                        cube.turn("B");
-                                        builder.append("D' B B ");
-                                    } else if (!cube.sides[0].cells[5].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("R");
-                                        builder.append("D D R R ");
-                                    } else if (!cube.sides[0].cells[7].color.equals("white")) {
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("F");
-                                        builder.append("D F F ");
-                                    } else if (!cube.sides[0].cells[3].color.equals("white")) {
-                                        cube.turn("L");
-                                        cube.turn("L");
-                                        builder.append("L L ");
+                                    if (!cube.get(0, 1).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D' B B")).append(" ");
+                                    } else if (!cube.get(0, 5).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D D R R")).append(" ");
+                                    } else if (!cube.get(0, 7).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("D F F")).append(" ");
+                                    } else if (!cube.get(0, 3).equals(Cube.Color.WHITE)) {
+                                        builder.append(cube.turn("L L")).append(" ");
                                     }
                                     break;
-
                             }
                         }
                         break;
-
                 }
             }
         }
     }
 
-    private void step2() {
-        while (!(cube.sides[1].cells[3].color.equals("orange") && cube.sides[1].cells[4].color.equals("orange") &&
-                cube.sides[2].cells[5].color.equals("red") && cube.sides[2].cells[4].color.equals("red") &&
-                cube.sides[3].cells[7].color.equals("green") && cube.sides[3].cells[4].color.equals("green") &&
-                cube.sides[4].cells[1].color.equals("blue") && cube.sides[4].cells[4].color.equals("blue"))) {
-            if (cube.sides[4].cells[1].color.equals("blue") && cube.sides[4].cells[4].color.equals("blue")) {
-                if (cube.sides[2].cells[5].color.equals("red") && cube.sides[2].cells[4].color.equals("red")) {
-                    cube.turn("R");
-                    cube.turn("U");
-                    cube.turn("R'");
-                    cube.turn("U'");
-                    cube.turn("R");
-                    builder.append("R U R' U' R ");
+    private void rightWhiteCross() {
+        while (!(cube.equalsColor(1, Arrays.asList(3, 4), Cube.Color.ORANGE) &&
+                cube.equalsColor(2, Arrays.asList(4, 5), Cube.Color.RED) &&
+                cube.equalsColor(3, Arrays.asList(4, 7), Cube.Color.GREEN) &&
+                cube.equalsColor(4, Arrays.asList(1, 4), Cube.Color.BLUE))) {
+            if (cube.equalsColor(4, Arrays.asList(1, 4), Cube.Color.BLUE)) {
+                if (cube.equalsColor(2, Arrays.asList(4, 5), Cube.Color.RED)) {
+                    builder.append(cube.turn("R U R' U' R")).append(" ");
                     continue;
                 }
-                if (cube.sides[1].cells[3].color.equals("orange") && cube.sides[1].cells[4].color.equals("orange")) {
-                    cube.turn("B");
-                    cube.turn("U");
-                    cube.turn("B'");
-                    cube.turn("U'");
-                    cube.turn("B");
-                    builder.append("B U B' U' B ");
+                if (cube.equalsColor(1, Arrays.asList(3, 4), Cube.Color.ORANGE)) {
+                    builder.append(cube.turn("B U B' U' B")).append(" ");
                     continue;
                 }
             }
-            if (cube.sides[3].cells[7].color.equals("green") && cube.sides[3].cells[4].color.equals("green")) {
-                if (cube.sides[2].cells[5].color.equals("red") && cube.sides[2].cells[4].color.equals("red")) {
-                    cube.turn("F");
-                    cube.turn("U");
-                    cube.turn("F'");
-                    cube.turn("U'");
-                    cube.turn("F");
-                    builder.append("F U F' U' F ");
+            if (cube.equalsColor(3, Arrays.asList(4, 7), Cube.Color.GREEN)) {
+                if (cube.equalsColor(2, Arrays.asList(4, 5), Cube.Color.RED)) {
+                    builder.append(cube.turn("F U F' U' F")).append(" ");
                     continue;
                 }
-                if (cube.sides[1].cells[3].color.equals("orange") && cube.sides[1].cells[4].color.equals("orange")) {
-                    cube.turn("L");
-                    cube.turn("U");
-                    cube.turn("L'");
-                    cube.turn("U'");
-                    cube.turn("L");
-                    builder.append("L U L' U' L ");
+                if (cube.equalsColor(1, Arrays.asList(3, 4), Cube.Color.ORANGE)) {
+                    builder.append(cube.turn("L U L' U' L")).append(" ");
                     continue;
                 }
             }
-            if ((cube.sides[4].cells[1].color.equals("blue") && cube.sides[4].cells[4].color.equals("blue") &&
-                    cube.sides[3].cells[7].color.equals("green") && cube.sides[3].cells[4].color.equals("green")) ||
-                    (cube.sides[1].cells[3].color.equals("orange") && cube.sides[1].cells[4].color.equals("orange") &&
-                            cube.sides[2].cells[5].color.equals("red") && cube.sides[2].cells[4].color.equals("red"))) {
-                cube.turn("R");
-                cube.turn("U");
-                cube.turn("R'");
-                cube.turn("U'");
-                cube.turn("R");
-                builder.append("R U R' U' R ");
+            if ((cube.equalsColor(4, Arrays.asList(1, 4), Cube.Color.BLUE) &&
+                    cube.equalsColor(3, Arrays.asList(4, 7), Cube.Color.GREEN)) ||
+                    (cube.equalsColor(1, Arrays.asList(3, 4), Cube.Color.ORANGE)
+                            && cube.equalsColor(2, Arrays.asList(4, 5), Cube.Color.RED))) {
+                builder.append(cube.turn("R U R' U' R")).append(" ");
                 continue;
             }
-            cube.turn("U");
-            builder.append("U ");
+            builder.append(cube.turn("U")).append(" ");
         }
     }
 
-    private void step3() {
+    private void whiteSide() {
         while (!(cube.sideFull(0) &&
-                cube.equalsColor(1, Arrays.asList(0, 3, 4, 6), "orange") &&
-                cube.equalsColor(2, Arrays.asList(2, 4, 5, 8), "red") &&
-                cube.equalsColor(3, Arrays.asList(4, 6, 7, 8), "green") &&
-                cube.equalsColor(4, Arrays.asList(0, 1, 2, 4), "blue"))) {
+                cube.equalsColor(1, Arrays.asList(0, 3, 4, 6), Cube.Color.ORANGE) &&
+                cube.equalsColor(2, Arrays.asList(2, 4, 5, 8), Cube.Color.RED) &&
+                cube.equalsColor(3, Arrays.asList(4, 6, 7, 8), Cube.Color.GREEN) &&
+                cube.equalsColor(4, Arrays.asList(0, 1, 2, 4), Cube.Color.BLUE))) {
             for (int i = 1; i < 6; i++) {
                 switch (i) {
                     case 1:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 0:
-                                    if (cube.sides[0].cells[2].color.equals("red") &&
-                                            cube.sides[3].cells[8].color.equals("green")) {
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("B' D B L' D L ");
-                                    } else if (cube.sides[0].cells[2].color.equals("green") &&
-                                            cube.sides[3].cells[8].color.equals("orange")) {
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("B' D B D' B' D B ");
-                                    } else if (cube.sides[0].cells[2].color.equals("blue") &&
-                                            cube.sides[3].cells[8].color.equals("red")) {
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("B' D B F' D D F ");
-                                    } else if (cube.sides[0].cells[2].color.equals("orange") &&
-                                            cube.sides[3].cells[8].color.equals("blue")) {
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("B' D B D D R' D R ");
+                                    if (cube.get(0, 2).equals(Cube.Color.RED) &&
+                                            cube.get(3, 8).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("B' D B L' D L")).append(" ");
+                                    } else if (cube.get(0, 2).equals(Cube.Color.GREEN) &&
+                                            cube.get(3, 8).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("B' D B D' B' D B")).append(" ");
+                                    } else if (cube.get(0, 2).equals(Cube.Color.BLUE) &&
+                                            cube.get(3, 8).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("B' D B F' D D F")).append(" ");
+                                    } else if (cube.get(0, 2).equals(Cube.Color.ORANGE) &&
+                                            cube.get(3, 8).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("B' D B D D R' D R")).append(" ");
                                     }
                                     break;
                                 case 2:
-                                    if (cube.sides[3].cells[2].color.equals("red") &&
-                                            cube.sides[5].cells[8].color.equals("green")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("L' D L ");
-                                    } else if (cube.sides[3].cells[2].color.equals("green") &&
-                                            cube.sides[5].cells[8].color.equals("orange")) {
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("D' B' D B ");
-                                    } else if (cube.sides[3].cells[2].color.equals("blue") &&
-                                            cube.sides[5].cells[8].color.equals("red")) {
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("F' D D F ");
-                                    } else if (cube.sides[3].cells[2].color.equals("orange") &&
-                                            cube.sides[5].cells[8].color.equals("blue")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("D D R' D R ");
+                                    if (cube.get(3, 2).equals(Cube.Color.RED) &&
+                                            cube.get(5, 8).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("L' D L")).append(" ");
+                                    } else if (cube.get(3, 2).equals(Cube.Color.GREEN) &&
+                                            cube.get(5, 8).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D' B' D B")).append(" ");
+                                    } else if (cube.get(3, 2).equals(Cube.Color.BLUE) &&
+                                            cube.get(5, 8).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("F' D D F")).append(" ");
+                                    } else if (cube.get(3, 2).equals(Cube.Color.ORANGE) &&
+                                            cube.get(5, 8).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("D D R' D R")).append(" ");
                                     }
                                     break;
                                 case 6:
-                                    if (cube.sides[4].cells[2].color.equals("red") &&
-                                            cube.sides[0].cells[8].color.equals("green")) {
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        cube.turn("B");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B'");
-                                        builder.append("F D' F' B D D B' ");
-                                    } else if (cube.sides[4].cells[2].color.equals("green") &&
-                                            cube.sides[0].cells[8].color.equals("orange")) {
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        builder.append("F D' F' D R D D R ");
-                                    } else if (cube.sides[4].cells[2].color.equals("blue") &&
-                                            cube.sides[0].cells[8].color.equals("red")) {
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        cube.turn("L");
-                                        cube.turn("D");
-                                        cube.turn("L'");
-                                        builder.append("F D' F' L D L'");
-                                    } else if (cube.sides[4].cells[2].color.equals("orange") &&
-                                            cube.sides[0].cells[8].color.equals("blue")) {
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        builder.append("F D' F' D F D' F' ");
+                                    if (cube.get(4, 2).equals(Cube.Color.RED) &&
+                                            cube.get(0, 8).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("F D' F' B D D B'")).append(" ");
+                                    } else if (cube.get(4, 2).equals(Cube.Color.GREEN) &&
+                                            cube.get(0, 8).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("F D' F' D R D D R")).append(" ");
+                                    } else if (cube.get(4, 2).equals(Cube.Color.BLUE) &&
+                                            cube.get(0, 8).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("F D' F' L D L'")).append(" ");
+                                    } else if (cube.get(4, 2).equals(Cube.Color.ORANGE) &&
+                                            cube.get(0, 8).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("F D' F' D F D' F'")).append(" ");
                                     }
                                     break;
                                 case 8:
-                                    if (cube.sides[5].cells[2].color.equals("red") &&
-                                            cube.sides[4].cells[8].color.equals("green")) {
-                                        cube.turn("B");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B'");
-                                        builder.append("B D D B'");
-                                    } else if (cube.sides[5].cells[2].color.equals("green") &&
-                                            cube.sides[4].cells[8].color.equals("orange")) {
-                                        cube.turn("D'");
-                                        cube.turn("R");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        builder.append("D' R D D R' ");
-                                    } else if (cube.sides[5].cells[2].color.equals("blue") &&
-                                            cube.sides[4].cells[8].color.equals("red")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        builder.append("L D' L'");
-                                    } else if (cube.sides[5].cells[2].color.equals("orange") &&
-                                            cube.sides[4].cells[8].color.equals("blue")) {
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        builder.append("D F D' F'");
+                                    if (cube.get(5, 2).equals(Cube.Color.RED) &&
+                                            cube.get(4, 8).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("B D D B'")).append(" ");
+                                    } else if (cube.get(5, 2).equals(Cube.Color.GREEN) &&
+                                            cube.get(4, 8).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D' R D D R'")).append(" ");
+                                    } else if (cube.get(5, 2).equals(Cube.Color.BLUE) &&
+                                            cube.get(4, 8).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("L D' L'")).append(" ");
+                                    } else if (cube.get(5, 2).equals(Cube.Color.ORANGE) &&
+                                            cube.get(4, 8).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("D F D' F'")).append(" ");
                                     }
                                     break;
                             }
                         }
                         break;
                     case 2:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 0:
-                                    if (cube.sides[5].cells[6].color.equals("red") &&
-                                            cube.sides[3].cells[0].color.equals("green")) {
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        builder.append("D B D' B' ");
-                                    } else if (cube.sides[5].cells[6].color.equals("green") &&
-                                            cube.sides[3].cells[0].color.equals("orange")) {
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        builder.append("R D' R'");
-                                    } else if (cube.sides[5].cells[6].color.equals("blue") &&
-                                            cube.sides[3].cells[0].color.equals("red")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D''");
-                                        cube.turn("L'");
-                                        builder.append("D D L D' L'");
-                                    } else if (cube.sides[5].cells[6].color.equals("orange") &&
-                                            cube.sides[3].cells[0].color.equals("blue")) {
-                                        cube.turn("F");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F'");
-                                        builder.append("F D D F' ");
+                                    if (cube.get(5, 6).equals(Cube.Color.RED) &&
+                                            cube.get(3, 0).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D B D' B'")).append(" ");
+                                    } else if (cube.get(5, 6).equals(Cube.Color.GREEN) &&
+                                            cube.get(3, 0).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("R D' R'")).append(" ");
+                                    } else if (cube.get(5, 6).equals(Cube.Color.BLUE) &&
+                                            cube.get(3, 0).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D D L D' L'")).append(" ");
+                                    } else if (cube.get(5, 6).equals(Cube.Color.ORANGE) &&
+                                            cube.get(3, 0).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("F D D F'")).append(" ");
                                     }
                                     break;
                                 case 2:
-                                    if (cube.sides[3].cells[6].color.equals("red") &&
-                                            cube.sides[0].cells[0].color.equals("green")) {
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        builder.append("B D' B' D B D' B' ");
-                                    } else if (cube.sides[3].cells[6].color.equals("green") &&
-                                            cube.sides[0].cells[0].color.equals("orange")) {
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        builder.append("B D' B' R D' R' ");
-                                    } else if (cube.sides[3].cells[6].color.equals("blue") &&
-                                            cube.sides[0].cells[0].color.equals("red")) {
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        builder.append("B D' B' D D L D' L' ");
-                                    } else if (cube.sides[3].cells[6].color.equals("orange") &&
-                                            cube.sides[0].cells[0].color.equals("blue")) {
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("F");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F'");
-                                        builder.append("B D' B' F D D F' ");
+                                    if (cube.get(3, 6).equals(Cube.Color.RED) &&
+                                            cube.get(0, 0).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("B D' B' D B D' B'")).append(" ");
+                                    } else if (cube.get(3, 6).equals(Cube.Color.GREEN) &&
+                                            cube.get(0, 0).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("B D' B' R D' R'")).append(" ");
+                                    } else if (cube.get(3, 6).equals(Cube.Color.BLUE) &&
+                                            cube.get(0, 0).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("B D' B' D D L D' L'")).append(" ");
+                                    } else if (cube.get(3, 6).equals(Cube.Color.ORANGE) &&
+                                            cube.get(0, 0).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("B D' B' F D D F'")).append(" ");
                                     }
                                     break;
                                 case 6:
-                                    if (cube.sides[4].cells[6].color.equals("red") &&
-                                            cube.sides[5].cells[0].color.equals("green")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("D D L' D L ");
-                                    } else if (cube.sides[4].cells[6].color.equals("green") &&
-                                            cube.sides[5].cells[0].color.equals("orange")) {
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("B' D D B ");
-                                    } else if (cube.sides[4].cells[6].color.equals("blue") &&
-                                            cube.sides[5].cells[0].color.equals("red")) {
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("D' F' D F ");
-                                    } else if (cube.sides[4].cells[6].color.equals("orange") &&
-                                            cube.sides[5].cells[0].color.equals("blue")) {
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("R' D R ");
+                                    if (cube.get(4, 6).equals(Cube.Color.RED) &&
+                                            cube.get(5, 0).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D D L' D L")).append(" ");
+                                    } else if (cube.get(4, 6).equals(Cube.Color.GREEN) &&
+                                            cube.get(5, 0).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("B' D D B")).append(" ");
+                                    } else if (cube.get(4, 6).equals(Cube.Color.BLUE) &&
+                                            cube.get(5, 0).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D' F' D F")).append(" ");
+                                    } else if (cube.get(4, 6).equals(Cube.Color.ORANGE) &&
+                                            cube.get(5, 0).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("R' D R")).append(" ");
                                     }
                                     break;
                                 case 8:
-                                    if (cube.sides[0].cells[6].color.equals("red") &&
-                                            cube.sides[4].cells[0].color.equals("green")) {
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("F' D F D D L' D L ");
-                                    } else if (cube.sides[0].cells[6].color.equals("green") &&
-                                            cube.sides[4].cells[0].color.equals("orange")) {
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("F' D F B' D D B ");
-                                    } else if (cube.sides[0].cells[6].color.equals("blue") &&
-                                            cube.sides[4].cells[0].color.equals("red")) {
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("F' D F D' F' D F ");
-                                    } else if (cube.sides[0].cells[6].color.equals("orange") &&
-                                            cube.sides[4].cells[0].color.equals("blue")) {
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("F' D F R' D R ");
+                                    if (cube.get(0, 6).equals(Cube.Color.RED) &&
+                                            cube.get(4, 0).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("F' D F D D L' D L")).append(" ");
+                                    } else if (cube.get(0, 6).equals(Cube.Color.GREEN) &&
+                                            cube.get(4, 0).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("F' D F B' D D B")).append(" ");
+                                    } else if (cube.get(0, 6).equals(Cube.Color.BLUE) &&
+                                            cube.get(4, 0).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("F' D F D' F' D F")).append(" ");
+                                    } else if (cube.get(0, 6).equals(Cube.Color.ORANGE) &&
+                                            cube.get(4, 0).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("F' D F R' D R")).append(" ");
                                     }
                                     break;
                             }
                         }
                         break;
                     case 3:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 0:
-                                    if (cube.sides[2].cells[0].color.equals("red") &&
-                                            cube.sides[5].cells[6].color.equals("green")) {
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("D' L' D L ");
-                                    } else if (cube.sides[2].cells[0].color.equals("green") &&
-                                            cube.sides[5].cells[6].color.equals("orange")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("D D B' D B ");
-                                    } else if (cube.sides[2].cells[0].color.equals("blue") &&
-                                            cube.sides[5].cells[6].color.equals("red")) {
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("F' D F ");
-                                    } else if (cube.sides[2].cells[0].color.equals("orange") &&
-                                            cube.sides[5].cells[6].color.equals("blue")) {
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("R' D D R ");
+                                    if (cube.get(2, 0).equals(Cube.Color.RED) &&
+                                            cube.get(5, 6).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D' L' D L")).append(" ");
+                                    } else if (cube.get(2, 0).equals(Cube.Color.GREEN) &&
+                                            cube.get(5, 6).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D D B' D B")).append(" ");
+                                    } else if (cube.get(2, 0).equals(Cube.Color.BLUE) &&
+                                            cube.get(5, 6).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("F' D F")).append(" ");
+                                    } else if (cube.get(2, 0).equals(Cube.Color.ORANGE) &&
+                                            cube.get(5, 6).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("R' D D R")).append(" ");
                                     }
                                     break;
                                 case 2:
-                                    if (cube.sides[5].cells[8].color.equals("red") &&
-                                            cube.sides[1].cells[2].color.equals("green")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        builder.append("D D B D' B' ");
-                                    } else if (cube.sides[5].cells[8].color.equals("green") &&
-                                            cube.sides[1].cells[2].color.equals("orange")) {
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        builder.append("D R D' R' ");
-                                    } else if (cube.sides[5].cells[8].color.equals("blue") &&
-                                            cube.sides[1].cells[2].color.equals("red")) {
-                                        cube.turn("L");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L'");
-                                        builder.append("L D D L' ");
-                                    } else if (cube.sides[5].cells[8].color.equals("orange") &&
-                                            cube.sides[1].cells[2].color.equals("blue")) {
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        builder.append("F D' F' ");
+                                    if (cube.get(5, 8).equals(Cube.Color.RED) &&
+                                            cube.get(1, 2).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D D B D' B'")).append(" ");
+                                    } else if (cube.get(5, 8).equals(Cube.Color.GREEN) &&
+                                            cube.get(1, 2).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D R D' R'")).append(" ");
+                                    } else if (cube.get(5, 8).equals(Cube.Color.BLUE) &&
+                                            cube.get(1, 2).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("L D D L'")).append(" ");
+                                    } else if (cube.get(5, 8).equals(Cube.Color.ORANGE) &&
+                                            cube.get(1, 2).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("F D' F'")).append(" ");
                                     }
                                     break;
                                 case 6:
-                                    if (cube.sides[0].cells[0].color.equals("red") &&
-                                            cube.sides[2].cells[2].color.equals("green")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("L' D L D' L' D L ");
-                                    } else if (cube.sides[0].cells[0].color.equals("green") &&
-                                            cube.sides[2].cells[2].color.equals("orange")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("L' D L D D B' D B ");
-                                    } else if (cube.sides[0].cells[0].color.equals("blue") &&
-                                            cube.sides[2].cells[2].color.equals("red")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("L' D L F' D F ");
-                                    } else if (cube.sides[0].cells[0].color.equals("orange") &&
-                                            cube.sides[2].cells[2].color.equals("blue")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("L' D L R' D D R ");
+                                    if (cube.get(0, 0).equals(Cube.Color.RED) &&
+                                            cube.get(2, 2).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("L' D L D' L' D L")).append(" ");
+                                    } else if (cube.get(0, 0).equals(Cube.Color.GREEN) &&
+                                            cube.get(2, 2).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("L' D L D D B' D B")).append(" ");
+                                    } else if (cube.get(0, 0).equals(Cube.Color.BLUE) &&
+                                            cube.get(2, 2).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("L' D L F' D F")).append(" ");
+                                    } else if (cube.get(0, 0).equals(Cube.Color.ORANGE) &&
+                                            cube.get(2, 2).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("L' D L R' D D R")).append(" ");
                                     }
                                     break;
                                 case 8:
-                                    if (cube.sides[1].cells[0].color.equals("red") &&
-                                            cube.sides[0].cells[2].color.equals("green")) {
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        builder.append("R D' R' D D B D' B' ");
-                                    } else if (cube.sides[1].cells[0].color.equals("green") &&
-                                            cube.sides[0].cells[2].color.equals("orange")) {
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        builder.append("R D' R' D R D' R' ");
-                                    } else if (cube.sides[1].cells[0].color.equals("blue") &&
-                                            cube.sides[0].cells[2].color.equals("red")) {
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        cube.turn("L");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L'");
-                                        builder.append("R D' R' L D D L' ");
-                                    } else if (cube.sides[1].cells[0].color.equals("orange") &&
-                                            cube.sides[0].cells[2].color.equals("blue")) {
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        builder.append("R D' R' F D' F' ");
+                                    if (cube.get(1, 0).equals(Cube.Color.RED) &&
+                                            cube.get(0, 2).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("R D' R' D D B D' B'")).append(" ");
+                                    } else if (cube.get(1, 0).equals(Cube.Color.GREEN) &&
+                                            cube.get(0, 2).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("R D' R' D R D' R'")).append(" ");
+                                    } else if (cube.get(1, 0).equals(Cube.Color.BLUE) &&
+                                            cube.get(0, 2).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("R D' R' L D D L'")).append(" ");
+                                    } else if (cube.get(1, 0).equals(Cube.Color.ORANGE) &&
+                                            cube.get(0, 2).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("R D' R' F D' F'")).append(" ");
                                     }
                                     break;
                             }
                         }
                         break;
                     case 4:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 0:
-                                    if (cube.sides[2].cells[8].color.equals("red") &&
-                                            cube.sides[0].cells[6].color.equals("green")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        builder.append("L D' L' B D' B' ");
-                                    } else if (cube.sides[2].cells[8].color.equals("green") &&
-                                            cube.sides[0].cells[6].color.equals("orange")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("R");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        builder.append("L D' L' R D D R' ");
-                                    } else if (cube.sides[2].cells[8].color.equals("blue") &&
-                                            cube.sides[0].cells[6].color.equals("red")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        builder.append("L D' L' D L D' L' ");
-                                    } else if (cube.sides[2].cells[8].color.equals("orange") &&
-                                            cube.sides[0].cells[6].color.equals("blue")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        builder.append("L D' L' D D F D' F' ");
+                                    if (cube.get(2, 8).equals(Cube.Color.RED) &&
+                                            cube.get(0, 6).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("L D' L' B D' B'")).append(" ");
+                                    } else if (cube.get(2, 8).equals(Cube.Color.GREEN) &&
+                                            cube.get(0, 6).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("L D' L' R D D R'")).append(" ");
+                                    } else if (cube.get(2, 8).equals(Cube.Color.BLUE) &&
+                                            cube.get(0, 6).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("L D' L' D L D' L'")).append(" ");
+                                    } else if (cube.get(2, 8).equals(Cube.Color.ORANGE) &&
+                                            cube.get(0, 6).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("L D' L' D D F D' F'")).append(" ");
                                     }
                                     break;
                                 case 2:
-                                    if (cube.sides[0].cells[8].color.equals("red") &&
-                                            cube.sides[1].cells[6].color.equals("green")) {
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("R' D R L' F F L ");
-                                    } else if (cube.sides[0].cells[8].color.equals("green") &&
-                                            cube.sides[1].cells[6].color.equals("orange")) {
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("R' D R B' D B ");
-                                    } else if (cube.sides[5].cells[8].color.equals("blue") &&
-                                            cube.sides[1].cells[6].color.equals("red")) {
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("R' D R D' R' D R");
-                                    } else if (cube.sides[5].cells[8].color.equals("orange") &&
-                                            cube.sides[1].cells[6].color.equals("blue")) {
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("R' D R D D F' D F ");
+                                    if (cube.get(0, 8).equals(Cube.Color.RED) &&
+                                            cube.get(1, 6).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("R' D R L' F F L")).append(" ");
+                                    } else if (cube.get(0, 8).equals(Cube.Color.GREEN) &&
+                                            cube.get(1, 6).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("R' D R B' D B")).append(" ");
+                                    } else if (cube.get(5, 8).equals(Cube.Color.BLUE) &&
+                                            cube.get(1, 6).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("R' D R D' R' D R")).append(" ");
+                                    } else if (cube.get(5, 8).equals(Cube.Color.ORANGE) &&
+                                            cube.get(1, 6).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("R' D R D D F' D F")).append(" ");
                                     }
                                     break;
                                 case 6:
-                                    if (cube.sides[5].cells[0].color.equals("red") &&
-                                            cube.sides[2].cells[6].color.equals("green")) {
-                                        cube.turn("B");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        builder.append("B D' B' ");
-                                    } else if (cube.sides[5].cells[0].color.equals("green") &&
-                                            cube.sides[2].cells[6].color.equals("orange")) {
-                                        cube.turn("R");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        builder.append("R D D R' ");
-                                    } else if (cube.sides[5].cells[0].color.equals("blue") &&
-                                            cube.sides[2].cells[6].color.equals("red")) {
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        builder.append("D L D' L' ");
-                                    } else if (cube.sides[5].cells[0].color.equals("orange") &&
-                                            cube.sides[2].cells[6].color.equals("blue")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        cube.turn("D'");
-                                        cube.turn("F'");
-                                        builder.append("D D F D' F' ");
+                                    if (cube.get(5, 0).equals(Cube.Color.RED) &&
+                                            cube.get(2, 6).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("B D' B'")).append(" ");
+                                    } else if (cube.get(5, 0).equals(Cube.Color.GREEN) &&
+                                            cube.get(2, 6).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("R D D R'")).append(" ");
+                                    } else if (cube.get(5, 0).equals(Cube.Color.BLUE) &&
+                                            cube.get(2, 6).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D L D' L'")).append(" ");
+                                    } else if (cube.get(5, 0).equals(Cube.Color.ORANGE) &&
+                                            cube.get(2, 6).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("D D F D' F'")).append(" ");
                                     }
                                     break;
                                 case 8:
-                                    if (cube.sides[1].cells[8].color.equals("red") &&
-                                            cube.sides[5].cells[2].color.equals("green")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("L' F F L ");
-                                    } else if (cube.sides[1].cells[8].color.equals("green") &&
-                                            cube.sides[5].cells[2].color.equals("orange")) {
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("B' D B ");
-                                    } else if (cube.sides[1].cells[8].color.equals("blue") &&
-                                            cube.sides[5].cells[2].color.equals("red")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("D D F' D F ");
-
-                                    } else if (cube.sides[1].cells[8].color.equals("orange") &&
-                                            cube.sides[5].cells[2].color.equals("blue")) {
-                                        cube.turn("D'");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("D' R' D R");
+                                    if (cube.get(1, 8).equals(Cube.Color.RED) &&
+                                            cube.get(5, 2).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("L' D D L")).append(" ");
+                                    } else if (cube.get(1, 8).equals(Cube.Color.GREEN) &&
+                                            cube.get(5, 2).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("B' D B")).append(" ");
+                                    } else if (cube.get(1, 8).equals(Cube.Color.BLUE) &&
+                                            cube.get(5, 2).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D D F' D F")).append(" ");
+                                    } else if (cube.get(1, 8).equals(Cube.Color.ORANGE) &&
+                                            cube.get(5, 2).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("D' R' D R")).append(" ");
                                     }
                                     break;
                             }
                         }
                         break;
                     case 5:
-                        for (Integer k : cube.find("white", i)) {
+                        for (Integer k : cube.find(Cube.Color.WHITE, i)) {
                             switch (k) {
                                 case 0:
-                                    if (cube.sides[2].cells[6].color.equals("red") &&
-                                            cube.sides[4].cells[6].color.equals("green")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("L D' L' L' D L ");
-                                    } else if (cube.sides[2].cells[6].color.equals("green") &&
-                                            cube.sides[4].cells[6].color.equals("orange")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("L D' L' D' B' D B ");
-                                    } else if (cube.sides[2].cells[6].color.equals("blue") &&
-                                            cube.sides[4].cells[6].color.equals("red")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("L D' L' F' D D F ");
-                                    } else if (cube.sides[2].cells[6].color.equals("orange") &&
-                                            cube.sides[4].cells[6].color.equals("blue")) {
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("L D' L' D D R' D R ");
+                                    if (cube.get(2, 6).equals(Cube.Color.RED) &&
+                                            cube.get(4, 6).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("L D' L' L' D L")).append(" ");
+                                    } else if (cube.get(2, 6).equals(Cube.Color.GREEN) &&
+                                            cube.get(4, 6).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("L D' L' D' B' D B")).append(" ");
+                                    } else if (cube.get(2, 6).equals(Cube.Color.BLUE) &&
+                                            cube.get(4, 6).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("L D' L' F' D D F")).append(" ");
+                                    } else if (cube.get(2, 6).equals(Cube.Color.ORANGE) &&
+                                            cube.get(4, 6).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("L D' L' D D R' D R")).append(" ");
                                     }
                                     break;
                                 case 2:
-                                    if (cube.sides[4].cells[8].color.equals("red") &&
-                                            cube.sides[1].cells[8].color.equals("green")) {
-                                        cube.turn("D'");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("D' L D' L' L' D L ");
-                                    } else if (cube.sides[4].cells[8].color.equals("green") &&
-                                            cube.sides[1].cells[8].color.equals("orange")) {
-                                        cube.turn("D'");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("D' L D' L' D' B' D B ");
-                                    } else if (cube.sides[4].cells[8].color.equals("blue") &&
-                                            cube.sides[1].cells[8].color.equals("red")) {
-                                        cube.turn("D'");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("D' L D' L' F' D D F ");
-                                    } else if (cube.sides[4].cells[8].color.equals("orange") &&
-                                            cube.sides[1].cells[8].color.equals("blue")) {
-                                        cube.turn("D'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("D' L D' L' D D R' D R ");
+                                    if (cube.get(4, 8).equals(Cube.Color.RED) &&
+                                            cube.get(1, 8).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D' L D' L' L' D L")).append(" ");
+                                    } else if (cube.get(4, 8).equals(Cube.Color.GREEN) &&
+                                            cube.get(1, 8).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D' L D' L' D' B' D B")).append(" ");
+                                    } else if (cube.get(4, 8).equals(Cube.Color.BLUE) &&
+                                            cube.get(1, 8).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D' L D' L' F' D D F")).append(" ");
+                                    } else if (cube.get(4, 8).equals(Cube.Color.ORANGE) &&
+                                            cube.get(1, 8).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("D' L D' L' D D R' D R")).append(" ");
                                     }
                                     break;
                                 case 6:
-                                    if (cube.sides[3].cells[0].color.equals("red") &&
-                                            cube.sides[2].cells[0].color.equals("green")) {
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("D L D' L' L' D L ");
-                                    } else if (cube.sides[3].cells[0].color.equals("green") &&
-                                            cube.sides[2].cells[0].color.equals("orange")) {
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("D L D' L' D' B' D B ");
-                                    } else if (cube.sides[3].cells[0].color.equals("blue") &&
-                                            cube.sides[2].cells[0].color.equals("red")) {
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("D L D' L' F' D D F ");
-                                    } else if (cube.sides[3].cells[0].color.equals("orange") &&
-                                            cube.sides[2].cells[0].color.equals("blue")) {
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("D L D' L' D D R' D R ");
+                                    if (cube.get(3, 0).equals(Cube.Color.RED) &&
+                                            cube.get(2, 0).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D L D' L' L' D L")).append(" ");
+                                    } else if (cube.get(3, 0).equals(Cube.Color.GREEN) &&
+                                            cube.get(2, 0).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D L D' L' D' B' D B")).append(" ");
+                                    } else if (cube.get(3, 0).equals(Cube.Color.BLUE) &&
+                                            cube.get(2, 0).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D L D' L' F' D D F")).append(" ");
+                                    } else if (cube.get(3, 0).equals(Cube.Color.ORANGE) &&
+                                            cube.get(2, 0).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("D L D' L' D D R' D R")).append(" ");
                                     }
                                     break;
                                 case 8:
-                                    if (cube.sides[1].cells[2].color.equals("red") &&
-                                            cube.sides[3].cells[2].color.equals("green")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        builder.append("D D L D' L' L' D L ");
-                                    } else if (cube.sides[1].cells[2].color.equals("green") &&
-                                            cube.sides[3].cells[2].color.equals("orange")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("D'");
-                                        cube.turn("B'");
-                                        cube.turn("D");
-                                        cube.turn("B");
-                                        builder.append("D D L D' L' D' B' D B ");
-                                    } else if (cube.sides[1].cells[2].color.equals("blue") &&
-                                            cube.sides[3].cells[2].color.equals("red")) {
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("D'");
-                                        cube.turn("L'");
-                                        cube.turn("F'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("F");
-                                        builder.append("D D L D' L' F' D D F ");
-                                    } else if (cube.sides[1].cells[2].color.equals("orange") &&
-                                            cube.sides[3].cells[2].color.equals("blue")) {
-                                        cube.turn("L'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("L");
-                                        cube.turn("R'");
-                                        cube.turn("D");
-                                        cube.turn("D");
-                                        cube.turn("R");
-                                        builder.append("L' D D L R' D D R ");
+                                    if (cube.get(1, 2).equals(Cube.Color.RED) &&
+                                            cube.get(3, 2).equals(Cube.Color.GREEN)) {
+                                        builder.append(cube.turn("D D L D' L' L' D L")).append(" ");
+                                    } else if (cube.get(1, 2).equals(Cube.Color.GREEN) &&
+                                            cube.get(3, 2).equals(Cube.Color.ORANGE)) {
+                                        builder.append(cube.turn("D D L D' L' D' B' D B")).append(" ");
+                                    } else if (cube.get(1, 2).equals(Cube.Color.BLUE) &&
+                                            cube.get(3, 2).equals(Cube.Color.RED)) {
+                                        builder.append(cube.turn("D D L D' L' F' D D F")).append(" ");
+                                    } else if (cube.get(1, 2).equals(Cube.Color.ORANGE) &&
+                                            cube.get(3, 2).equals(Cube.Color.BLUE)) {
+                                        builder.append(cube.turn("L' D D L R' D D R")).append(" ");
                                     }
                                     break;
                             }
@@ -1430,32 +668,20 @@ class Solver {
                 for (int j = 0; j < 9; j++) {
                     switch (j) {
                         case 0:
-                            if (!cube.sides[3].cells[6].color.equals("green")) {
-                                cube.turn("L'");
-                                cube.turn("D'");
-                                cube.turn("L");
-                                builder.append("L' D' L ");
+                            if (!cube.get(3, 6).equals(Cube.Color.GREEN)) {
+                                builder.append(cube.turn("L' D' L")).append(" ");
                             }
                         case 2:
-                            if (!cube.sides[3].cells[8].color.equals("green")) {
-                                cube.turn("R");
-                                cube.turn("D");
-                                cube.turn("R'");
-                                builder.append("R D R' ");
+                            if (!cube.get(3, 8).equals(Cube.Color.GREEN)) {
+                                builder.append(cube.turn("R D R'")).append(" ");
                             }
                         case 6:
-                            if (!cube.sides[4].cells[0].color.equals("blue")) {
-                                cube.turn("L");
-                                cube.turn("D");
-                                cube.turn("L'");
-                                builder.append("L D L' ");
+                            if (!cube.get(4, 0).equals(Cube.Color.BLUE)) {
+                                builder.append(cube.turn("L D L'")).append(" ");
                             }
                         case 8:
-                            if (!cube.sides[4].cells[2].color.equals("blue")) {
-                                cube.turn("R'");
-                                cube.turn("D'");
-                                cube.turn("R");
-                                builder.append("R' D' R ");
+                            if (!cube.get(4, 2).equals(Cube.Color.BLUE)) {
+                                builder.append(cube.turn("R' D' R")).append(" ");
                             }
                     }
                 }
@@ -1463,346 +689,153 @@ class Solver {
         }
     }
 
-    private void step4() {
-        while (!(cube.sideFull(0) && cube.equalsColor(1, Arrays.asList(0, 1, 3, 4, 6, 7), "orange") &&
-                cube.equalsColor(2, Arrays.asList(1, 2, 4, 5, 7, 8), "red") &&
-                cube.equalsColor(3, Arrays.asList(3, 4, 5, 6, 7, 8), "green") &&
-                cube.equalsColor(4, Arrays.asList(0, 1, 2, 3, 4, 5), "blue"))) {
-            if (!cube.sides[5].cells[1].color.equals("yellow") && !cube.sides[4].cells[7].color.equals("yellow")) {
-                switch (cube.sides[4].cells[7].color) {
-                    case "blue":
-                        switch (cube.sides[5].cells[1].color) {
-                            case "red":
-                                cube.turn("D");
-                                cube.turn("L");
-                                cube.turn("D'");
-                                cube.turn("L'");
-                                cube.turn("D'");
-                                cube.turn("F'");
-                                cube.turn("D");
-                                cube.turn("F");
-                                builder.append("D L D' L' D' F' D F ");
+    private void secondLayer() {
+        while (!(cube.sideFull(0) &&
+                cube.equalsColor(1, Arrays.asList(0, 1, 3, 4, 6, 7), Cube.Color.ORANGE) &&
+                cube.equalsColor(2, Arrays.asList(1, 2, 4, 5, 7, 8), Cube.Color.RED) &&
+                cube.equalsColor(3, Arrays.asList(3, 4, 5, 6, 7, 8), Cube.Color.GREEN) &&
+                cube.equalsColor(4, Arrays.asList(0, 1, 2, 3, 4, 5), Cube.Color.BLUE))) {
+            if (!cube.get(5, 1).equals(Cube.Color.YELLOW) && !cube.get(4, 7).equals(Cube.Color.YELLOW)) {
+                switch (cube.get(4, 7)) {
+                    case BLUE:
+                        switch (cube.get(5, 1)) {
+                            case RED:
+                                builder.append(cube.turn("D L D' L' D' F' D F")).append(" ");
                                 break;
-                            case "orange":
-                                cube.turn("D'");
-                                cube.turn("R'");
-                                cube.turn("D");
-                                cube.turn("R");
-                                cube.turn("D");
-                                cube.turn("F");
-                                cube.turn("D'");
-                                cube.turn("F'");
-                                builder.append("D' R' D R D F D' F' ");
+                            case ORANGE:
+                                builder.append(cube.turn("D' R' D R D F D' F'")).append(" ");
                                 break;
                         }
                         break;
-                    case "green":
-                        switch (cube.sides[5].cells[1].color) {
-                            case "red":
-                                cube.turn("D");
-                                cube.turn("L'");
-                                cube.turn("D");
-                                cube.turn("L");
-                                cube.turn("D");
-                                cube.turn("B");
-                                cube.turn("D'");
-                                cube.turn("B'");
-                                builder.append("D L' D L D B D' B' ");
+                    case GREEN:
+                        switch (cube.get(5, 1)) {
+                            case RED:
+                                builder.append(cube.turn("D L' D L D B D' B'")).append(" ");
                                 break;
-                            case "orange":
-                                cube.turn("D'");
-                                cube.turn("R");
-                                cube.turn("D'");
-                                cube.turn("R'");
-                                cube.turn("D'");
-                                cube.turn("B'");
-                                cube.turn("D");
-                                cube.turn("B");
-                                builder.append("D' R D' R' D' B' D B ");
+                            case ORANGE:
+                                builder.append(cube.turn("D' R D' R' D' B' D B")).append(" ");
                                 break;
                         }
                         break;
-                    case "red":
-                        switch (cube.sides[5].cells[1].color) {
-                            case "blue":
-                                cube.turn("D");
-                                cube.turn("D");
-                                cube.turn("F'");
-                                cube.turn("D");
-                                cube.turn("F");
-                                cube.turn("D");
-                                cube.turn("L");
-                                cube.turn("D'");
-                                cube.turn("L'");
-                                builder.append("D D F' D F D L D' L' ");
+                    case RED:
+                        switch (cube.get(5, 1)) {
+                            case BLUE:
+                                builder.append(cube.turn("D D F' D F D L D' L'")).append(" ");
                                 break;
-                            case "green":
-                                cube.turn("B");
-                                cube.turn("D'");
-                                cube.turn("B'");
-                                cube.turn("D'");
-                                cube.turn("L'");
-                                cube.turn("D");
-                                cube.turn("L");
-                                builder.append("B D' B' D' L' D L ");
+                            case GREEN:
+                                builder.append(cube.turn("B D' B' D' L' D L")).append(" ");
                                 break;
                         }
                         break;
-                    case "orange":
-                        switch (cube.sides[5].cells[1].color) {
-                            case "blue":
-                                cube.turn("D");
-                                cube.turn("D");
-                                cube.turn("F");
-                                cube.turn("D'");
-                                cube.turn("F'");
-                                cube.turn("D'");
-                                cube.turn("R'");
-                                cube.turn("D");
-                                cube.turn("R");
-                                builder.append("D D F D' F' D' R' D R ");
+                    case ORANGE:
+                        switch (cube.get(5, 1)) {
+                            case BLUE:
+                                builder.append(cube.turn("D D F D' F' D' R' D R")).append(" ");
                                 break;
-                            case "green":
-                                cube.turn("B'");
-                                cube.turn("D");
-                                cube.turn("B");
-                                cube.turn("D");
-                                cube.turn("R");
-                                cube.turn("D'");
-                                cube.turn("R'");
-                                builder.append("B' D B D R D' R' ");
+                            case GREEN:
+                                builder.append(cube.turn("B' D B D R D' R'")).append(" ");
                                 break;
                         }
                         break;
                 }
             } else {
-                if ((cube.equalsColor(4, Collections.singletonList(7), "yellow") ||
-                        cube.equalsColor(5, Collections.singletonList(1), "yellow")) &&
-                        (cube.equalsColor(1, Collections.singletonList(5), "yellow") ||
-                                cube.equalsColor(5, Collections.singletonList(5), "yellow")) &&
-                        (cube.equalsColor(2, Collections.singletonList(3), "yellow") ||
-                                cube.equalsColor(5, Collections.singletonList(3), "yellow")) &&
-                        (cube.equalsColor(3, Collections.singletonList(1), "yellow") ||
-                                cube.equalsColor(5, Collections.singletonList(7), "yellow"))) {
-                    if (!cube.sides[4].cells[5].color.equals("blue") || !cube.sides[1].cells[7].color.equals("orange")) {
-                        cube.turn("R'");
-                        cube.turn("D");
-                        cube.turn("R");
-                        cube.turn("D");
-                        cube.turn("F");
-                        cube.turn("D'");
-                        cube.turn("F'");
-                        builder.append("R' D R D F D' F' ");
-                    } else if (!cube.sides[4].cells[3].color.equals("blue") || !cube.sides[2].cells[7].color.equals("red")) {
-                        cube.turn("L");
-                        cube.turn("D'");
-                        cube.turn("L'");
-                        cube.turn("D'");
-                        cube.turn("F'");
-                        cube.turn("D");
-                        cube.turn("F");
-                        builder.append("L D' L' D' F' D F ");
-                    } else if (!cube.sides[3].cells[5].color.equals("green") || !cube.sides[1].cells[1].color.equals("orange")) {
-                        cube.turn("R");
-                        cube.turn("D'");
-                        cube.turn("R'");
-                        cube.turn("D'");
-                        cube.turn("B'");
-                        cube.turn("D");
-                        cube.turn("B");
-                        builder.append("R D' R' D' B' D B ");
-                    } else if (!cube.sides[3].cells[3].color.equals("green") || !cube.sides[2].cells[1].color.equals("red")) {
-                        cube.turn("L'");
-                        cube.turn("D");
-                        cube.turn("L");
-                        cube.turn("D");
-                        cube.turn("B");
-                        cube.turn("D'");
-                        cube.turn("B'");
-                        builder.append("L' D L D B D' B' ");
+                if ((cube.equalsColor(4, Collections.singletonList(7), Cube.Color.YELLOW) ||
+                        cube.equalsColor(5, Collections.singletonList(1), Cube.Color.YELLOW)) &&
+                        (cube.equalsColor(1, Collections.singletonList(5), Cube.Color.YELLOW) ||
+                                cube.equalsColor(5, Collections.singletonList(5), Cube.Color.YELLOW)) &&
+                        (cube.equalsColor(2, Collections.singletonList(3), Cube.Color.YELLOW) ||
+                                cube.equalsColor(5, Collections.singletonList(3), Cube.Color.YELLOW)) &&
+                        (cube.equalsColor(3, Collections.singletonList(1), Cube.Color.YELLOW) ||
+                                cube.equalsColor(5, Collections.singletonList(7), Cube.Color.YELLOW))) {
+                    if (!cube.get(4, 5).equals(Cube.Color.BLUE) || !cube.get(1, 7).equals(Cube.Color.ORANGE)) {
+                        builder.append(cube.turn("R' D R D F D' F'")).append(" ");
+                    } else if (!cube.get(4, 3).equals(Cube.Color.BLUE) || !cube.get(2, 7).equals(Cube.Color.RED)) {
+                        builder.append(cube.turn("L D' L' D' F' D F")).append(" ");
+                    } else if (!cube.get(3, 5).equals(Cube.Color.GREEN) || !cube.get(1, 1).equals(Cube.Color.ORANGE)) {
+                        builder.append(cube.turn("R D' R' D' B' D B")).append(" ");
+                    } else if (!cube.get(3, 3).equals(Cube.Color.GREEN) || !cube.get(2, 1).equals(Cube.Color.RED)) {
+                        builder.append(cube.turn("L' D L D B D' B'")).append(" ");
                     }
                 } else {
-                    cube.turn("D");
-                    builder.append("D ");
+                    builder.append(cube.turn("D")).append(" ");
                 }
             }
         }
     }
 
-    private void step5() {
-        while (!(cube.equalsColor(5, Arrays.asList(1, 3, 4, 5, 7), "yellow"))) {
-            if (cube.equalsColor(5, Arrays.asList(0, 4, 7), "yellow") ||
-                    cube.equalsColor(5, Arrays.asList(3, 4, 7), "yellow") ||
-                    cube.equalsColor(5, Arrays.asList(4, 5, 7), "yellow") ||
-                    cube.equalsColor(5, Arrays.asList(1, 4, 5), "yellow")) {
-                cube.turn("D");
-                builder.append("D ");
+    private void yellowCross() {
+        while (!(cube.equalsColor(5, Arrays.asList(1, 3, 4, 5, 7), Cube.Color.YELLOW))) {
+            if (cube.equalsColor(5, Arrays.asList(0, 4, 7), Cube.Color.YELLOW) ||
+                    cube.equalsColor(5, Arrays.asList(3, 4, 7), Cube.Color.YELLOW) ||
+                    cube.equalsColor(5, Arrays.asList(4, 5, 7), Cube.Color.YELLOW) ||
+                    cube.equalsColor(5, Arrays.asList(1, 4, 5), Cube.Color.YELLOW)) {
+                builder.append(cube.turn("D")).append(" ");
             }
-            if (cube.equalsColor(5, Arrays.asList(3, 4, 5), "yellow") ||
-                    cube.equalsColor(5, Arrays.asList(1, 3, 4), "yellow") ||
-                    cube.equalsColor(5, Collections.singletonList(4), "yellow")) {
-                cube.turn("B");
-                cube.turn("R");
-                cube.turn("D");
-                cube.turn("R'");
-                cube.turn("D'");
-                cube.turn("B'");
-                builder.append("B R D R' D' B' ");
+            if (cube.equalsColor(5, Arrays.asList(3, 4, 5), Cube.Color.YELLOW) ||
+                    cube.equalsColor(5, Arrays.asList(1, 3, 4), Cube.Color.YELLOW) ||
+                    cube.equalsColor(5, Collections.singletonList(4), Cube.Color.YELLOW)) {
+                builder.append(cube.turn("B R D R' D' B'")).append(" ");
             }
         }
     }
 
-    private void step6() {
-        while (!(cube.equalsColor(1, Collections.singletonList(5), "orange") &&
-                cube.equalsColor(2, Collections.singletonList(3), "red") &&
-                cube.equalsColor(3, Collections.singletonList(1), "green") &&
-                cube.equalsColor(4, Collections.singletonList(7), "blue"))) {
-            if (cube.equalsColor(4, Collections.singletonList(7), "blue")) {
-                if (cube.equalsColor(1, Collections.singletonList(5), "orange")) {
-                    cube.turn("R");
-                    cube.turn("D");
-                    cube.turn("R'");
-                    cube.turn("D");
-                    cube.turn("R");
-                    cube.turn("D");
-                    cube.turn("D");
-                    cube.turn("R'");
-                    cube.turn("D");
-                    builder.append("R D R' D R D D R' D ");
-                } else if (cube.equalsColor(3, Collections.singletonList(1), "green")) {
-                    cube.turn("R");
-                    cube.turn("D");
-                    cube.turn("R'");
-                    cube.turn("D");
-                    cube.turn("R");
-                    cube.turn("D");
-                    cube.turn("D");
-                    cube.turn("R'");
-                    cube.turn("D");
-                    builder.append("R D R' D R D D R' D ");
-                } else if (cube.equalsColor(2, Collections.singletonList(3), "red")) {
-                    cube.turn("F");
-                    cube.turn("D");
-                    cube.turn("F'");
-                    cube.turn("D");
-                    cube.turn("F");
-                    cube.turn("D");
-                    cube.turn("D");
-                    cube.turn("F'");
-                    cube.turn("D");
-                    builder.append("F D F' D F D D F' D ");
+    private void rightYellowCross() {
+        while (!(cube.equalsColor(1, Collections.singletonList(5), Cube.Color.ORANGE) &&
+                cube.equalsColor(2, Collections.singletonList(3), Cube.Color.RED) &&
+                cube.equalsColor(3, Collections.singletonList(1), Cube.Color.GREEN) &&
+                cube.equalsColor(4, Collections.singletonList(7), Cube.Color.BLUE))) {
+            if (cube.equalsColor(4, Collections.singletonList(7), Cube.Color.BLUE)) {
+                if (cube.equalsColor(1, Collections.singletonList(5), Cube.Color.ORANGE)) {
+                    builder.append(cube.turn("R D R' D R D D R' D")).append(" ");
+                } else if (cube.equalsColor(3, Collections.singletonList(1), Cube.Color.GREEN)) {
+                    builder.append(cube.turn("R D R' D R D D R' D")).append(" ");
+                } else if (cube.equalsColor(2, Collections.singletonList(3), Cube.Color.RED)) {
+                    builder.append(cube.turn("F D F' D F D D F' D")).append(" ");
                 } else {
-                    cube.turn("D");
-                    builder.append("D ");
+                    builder.append(cube.turn("D")).append(" ");
                 }
-            } else if (cube.equalsColor(3, Collections.singletonList(1), "green")) {
-                if (cube.equalsColor(1, Collections.singletonList(5), "orange")) {
-                    cube.turn("B");
-                    cube.turn("D");
-                    cube.turn("B'");
-                    cube.turn("D");
-                    cube.turn("B");
-                    cube.turn("D");
-                    cube.turn("D");
-                    cube.turn("B'");
-                    cube.turn("D");
-                    builder.append("B D B' D B D D B' D ");
-                } else if (cube.equalsColor(2, Collections.singletonList(3), "red")) {
-                    cube.turn("L");
-                    cube.turn("D");
-                    cube.turn("L'");
-                    cube.turn("D");
-                    cube.turn("L");
-                    cube.turn("D");
-                    cube.turn("D");
-                    cube.turn("L'");
-                    cube.turn("D");
-                    builder.append("L D L' D L D D L' D ");
+            } else if (cube.equalsColor(3, Collections.singletonList(1), Cube.Color.GREEN)) {
+                if (cube.equalsColor(1, Collections.singletonList(5), Cube.Color.ORANGE)) {
+                    builder.append(cube.turn("B D B' D B D D B' D")).append(" ");
+                } else if (cube.equalsColor(2, Collections.singletonList(3), Cube.Color.RED)) {
+                    builder.append(cube.turn("L D L' D L D D L' D")).append(" ");
                 } else {
-                    cube.turn("D");
-                    builder.append("D ");
+                    builder.append(cube.turn("D")).append(" ");
                 }
             } else {
-                cube.turn("D");
-                builder.append("D ");
+                builder.append(cube.turn("D")).append(" ");
             }
         }
     }
 
-    private void step7() {
+    private void rightCorner() {
         while (!(cube.rightMinCube(0) && cube.rightMinCube(1) &&
                 cube.rightMinCube(2) && cube.rightMinCube(3))) {
             if (cube.rightMinCube(0)) {
-                cube.turn("D");
-                cube.turn("L");
-                cube.turn("D'");
-                cube.turn("R'");
-                cube.turn("D");
-                cube.turn("L'");
-                cube.turn("D'");
-                cube.turn("R");
-                builder.append("D L D' R' D L' D' R ");
+                builder.append(cube.turn("D L D' R' D L' D' R")).append(" ");
             } else if (cube.rightMinCube(1)) {
-                cube.turn("D");
-                cube.turn("F");
-                cube.turn("D'");
-                cube.turn("B'");
-                cube.turn("D");
-                cube.turn("F'");
-                cube.turn("D'");
-                cube.turn("B");
-                builder.append("D F D' B' D F' D' B ");
+                builder.append(cube.turn("D F D' B' D F' D' B")).append(" ");
             } else if (cube.rightMinCube(2)) {
-                cube.turn("D");
-                cube.turn("R");
-                cube.turn("D'");
-                cube.turn("L'");
-                cube.turn("D");
-                cube.turn("R'");
-                cube.turn("D'");
-                cube.turn("L");
-                builder.append("D R D' L' D R' D' L ");
+                builder.append(cube.turn("D R D' L' D R' D' L")).append(" ");
             } else if (cube.rightMinCube(3)) {
-                cube.turn("D");
-                cube.turn("B");
-                cube.turn("D'");
-                cube.turn("F'");
-                cube.turn("D");
-                cube.turn("B'");
-                cube.turn("D'");
-                cube.turn("F");
-                builder.append("D B D' F' D B' D' F ");
+                builder.append(cube.turn("D B D' F' D B' D' F")).append(" ");
             } else {
-                cube.turn("D");
-                cube.turn("L");
-                cube.turn("D'");
-                cube.turn("R'");
-                cube.turn("D");
-                cube.turn("L'");
-                cube.turn("D'");
-                cube.turn("R");
-                builder.append("D L D' R' D L' D' R ");
+                builder.append(cube.turn("D L D' R' D L' D' R")).append(" ");
             }
         }
     }
 
-    private void step8() {
+    private void turnCorner() {
         while (!cube.sideFull(5)) {
-            if (!cube.equalsColor(5, Collections.singletonList(0), "yellow")) {
-                cube.turn("U");
-                cube.turn("F");
-                cube.turn("U'");
-                cube.turn("F'");
-                builder.append("U F U' F' ");
+            if (!cube.equalsColor(5, Collections.singletonList(0), Cube.Color.YELLOW)) {
+                builder.append(cube.turn("U F U' F'")).append(" ");
             } else {
-                cube.turn("D");
-                builder.append("D ");
+                builder.append(cube.turn("D")).append(" ");
             }
         }
         while (!cube.isSolved()) {
-            if (!cube.equalsColor(4, Collections.singletonList(7), "blue")) {
-                cube.turn("D");
-                builder.append("D ");
+            if (!cube.equalsColor(4, Collections.singletonList(7), Cube.Color.BLUE)) {
+                builder.append(cube.turn("D")).append(" ");
             }
         }
     }

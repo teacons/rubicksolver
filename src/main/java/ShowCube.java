@@ -14,7 +14,7 @@ import javax.swing.*;
  */
 class ShowCube extends JFrame {
     private Cube cube = new Cube();
-    private String[] colorBut = new String[54];
+    private Cube.Color[] colorBut = new Cube.Color[54];
 
     ShowCube() {
 
@@ -31,29 +31,29 @@ class ShowCube extends JFrame {
             for (int j = 0; j < 9; j++) {
                 JButton objButton = buttons.get(i * 9 + j);
                 switch (cube.sides[i].cells[j].color) {
-                    case "blue":
+                    case BLUE:
                         objButton.setBackground(Color.blue);
-                        colorBut[i * 9 + j] = "blue";
+                        colorBut[i * 9 + j] = Cube.Color.BLUE;
                         break;
-                    case "white":
+                    case WHITE:
                         objButton.setBackground(Color.white);
-                        colorBut[i * 9 + j] = "white";
+                        colorBut[i * 9 + j] = Cube.Color.WHITE;
                         break;
-                    case "orange":
+                    case ORANGE:
                         objButton.setBackground(Color.orange);
-                        colorBut[i * 9 + j] = "orange";
+                        colorBut[i * 9 + j] = Cube.Color.ORANGE;
                         break;
-                    case "yellow":
+                    case YELLOW:
                         objButton.setBackground(Color.yellow);
-                        colorBut[i * 9 + j] = "yellow";
+                        colorBut[i * 9 + j] = Cube.Color.YELLOW;
                         break;
-                    case "red":
+                    case RED:
                         objButton.setBackground(Color.red);
-                        colorBut[i * 9 + j] = "red";
+                        colorBut[i * 9 + j] = Cube.Color.RED;
                         break;
-                    case "green":
+                    case GREEN:
                         objButton.setBackground(Color.green);
-                        colorBut[i * 9 + j] = "green";
+                        colorBut[i * 9 + j] = Cube.Color.GREEN;
                         break;
                 }
             }
@@ -142,35 +142,35 @@ class ShowCube extends JFrame {
         JButton btn = (JButton) e.getSource();
         int intButName = Integer.parseInt(btn.getName());
         switch (colorBut[intButName]) {
-            case "white":
+            case WHITE:
                 btn.setBackground(Color.orange);
-                colorBut[Integer.parseInt(btn.getName())] = "orange";
-                cube.sides[intButName / 9].cells[intButName % 9].color = "orange";
+                colorBut[Integer.parseInt(btn.getName())] = Cube.Color.ORANGE;
+                cube.sides[intButName / 9].cells[intButName % 9].color = Cube.Color.ORANGE;
                 break;
-            case "orange":
+            case ORANGE:
                 btn.setBackground(Color.red);
-                colorBut[Integer.parseInt(btn.getName())] = "red";
-                cube.sides[intButName / 9].cells[intButName % 9].color = "red";
+                colorBut[Integer.parseInt(btn.getName())] = Cube.Color.RED;
+                cube.sides[intButName / 9].cells[intButName % 9].color = Cube.Color.RED;
                 break;
-            case "red":
+            case RED:
                 btn.setBackground(Color.green);
-                colorBut[Integer.parseInt(btn.getName())] = "green";
-                cube.sides[intButName / 9].cells[intButName % 9].color = "green";
+                colorBut[Integer.parseInt(btn.getName())] = Cube.Color.GREEN;
+                cube.sides[intButName / 9].cells[intButName % 9].color = Cube.Color.GREEN;
                 break;
-            case "green":
+            case GREEN:
                 btn.setBackground(Color.blue);
-                colorBut[Integer.parseInt(btn.getName())] = "blue";
-                cube.sides[intButName / 9].cells[intButName % 9].color = "blue";
+                colorBut[Integer.parseInt(btn.getName())] = Cube.Color.BLUE;
+                cube.sides[intButName / 9].cells[intButName % 9].color = Cube.Color.BLUE;
                 break;
-            case "blue":
+            case BLUE:
                 btn.setBackground(Color.yellow);
-                colorBut[Integer.parseInt(btn.getName())] = "yellow";
-                cube.sides[intButName / 9].cells[intButName % 9].color = "yellow";
+                colorBut[Integer.parseInt(btn.getName())] = Cube.Color.YELLOW;
+                cube.sides[intButName / 9].cells[intButName % 9].color = Cube.Color.YELLOW;
                 break;
-            case "yellow":
+            case YELLOW:
                 btn.setBackground(Color.white);
-                colorBut[Integer.parseInt(btn.getName())] = "white";
-                cube.sides[intButName / 9].cells[intButName % 9].color = "white";
+                colorBut[Integer.parseInt(btn.getName())] = Cube.Color.WHITE;
+                cube.sides[intButName / 9].cells[intButName % 9].color = Cube.Color.WHITE;
                 break;
         }
     }
